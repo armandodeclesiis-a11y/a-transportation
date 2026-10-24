@@ -1,0 +1,577 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A Transportation | Luxury Mobility</title>
+<style>
+:root {
+  --bg:#08090b;
+  --panel:#15171b;
+  --panel2:#202329;
+  --gold:#e8bb75;
+  --text:#f8f8f8;
+  --muted:#a5a6aa;
+}
+* {box-sizing:border-box}
+body {
+  margin:0;
+  background:#050506;
+  color:var(--text);
+  font-family:Arial,Helvetica,sans-serif;
+}
+button,input,select {font:inherit}
+button {cursor:pointer}
+.app {
+  max-width:460px;
+  margin:0 auto;
+  min-height:100vh;
+  background:var(--bg);
+  padding-bottom:85px;
+}
+.top {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:23px 20px;
+  background:#08090b;
+  border-bottom:1px solid #282828;
+}
+.brand {
+  text-align:center;
+  line-height:1.1;
+}
+.brand .a {
+  font-family:Georgia,serif;
+  font-size:47px;
+  font-weight:normal;
+}
+.brand .name {
+  font-size:11px;
+  letter-spacing:4px;
+}
+.brand .tag {
+  font-size:8px;
+  letter-spacing:2px;
+  color:var(--gold);
+  margin-top:7px;
+}
+.menu {
+  background:none;
+  border:0;
+  color:white;
+  font-size:25px;
+}
+.partner {
+  font-size:10px;
+  font-weight:bold;
+  color:#eee;
+  text-align:right;
+}
+.partner small {
+  display:block;
+  color:var(--gold);
+  letter-spacing:2px;
+  margin-top:4px;
+}
+.screen {display:none}
+.screen.active {display:block}
+.hero {
+  min-height:340px;
+  padding:80px 25px 30px;
+  background:
+    linear-gradient(0deg,#08090b,transparent 75%),
+    linear-gradient(135deg,#101821,#29394a,#07090d);
+  display:flex;
+  flex-direction:column;
+  justify-content:end;
+}
+.eyebrow {
+  color:var(--gold);
+  letter-spacing:3px;
+  font-size:11px;
+}
+.hero h1 {
+  font-size:34px;
+  line-height:1.1;
+  margin:14px 0;
+}
+.hero p {
+  color:#d1d1d1;
+  font-size:14px;
+  line-height:1.6;
+}
+.content {padding:23px 18px}
+h2 {font-size:23px;margin:10px 0 20px}
+h3 {margin:10px 0}
+.muted {color:var(--muted);font-size:13px;line-height:1.6}
+.gold {
+  background:linear-gradient(110deg,#f8d99e,#d9a65d);
+  color:#17110b;
+  border:0;
+  border-radius:9px;
+  padding:15px;
+  font-weight:bold;
+  width:100%;
+}
+.outline {
+  background:#191b1f;
+  color:white;
+  border:1px solid #49433a;
+  border-radius:9px;
+  padding:13px;
+  width:100%;
+}
+.tiles {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin:22px 0;
+}
+.tile {
+  background:var(--panel);
+  border:1px solid #292929;
+  border-radius:13px;
+  overflow:hidden;
+}
+.tile-art {
+  height:110px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:60px;
+  background:linear-gradient(135deg,#30353a,#111318);
+}
+.tile-body {padding:14px}
+.tile h3 {font-size:15px}
+.tile p {font-size:11px;color:var(--muted)}
+.tile button {
+  border:0;
+  background:none;
+  color:var(--gold);
+  padding:8px 0;
+  font-size:12px;
+  font-weight:bold;
+}
+.vehicle {
+  background:var(--panel);
+  border:1px solid #292929;
+  border-radius:13px;
+  overflow:hidden;
+  margin-bottom:15px;
+}
+.vehicle-art {
+  height:185px;
+  background:linear-gradient(135deg,#333d49,#101318);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:85px;
+}
+.vehicle-info {padding:17px}
+.vehicle-head {
+  display:flex;
+  justify-content:space-between;
+  align-items:start;
+  gap:12px;
+}
+.price {color:var(--gold);font-weight:bold}
+.features {
+  display:flex;
+  flex-wrap:wrap;
+  gap:9px;
+  margin:14px 0;
+}
+.features span {
+  background:#25282d;
+  border-radius:7px;
+  padding:8px;
+  color:#d1d1d1;
+  font-size:11px;
+}
+.field {margin-bottom:16px}
+label {
+  display:block;
+  color:#c8c8c8;
+  font-size:12px;
+  margin-bottom:8px;
+}
+input,select {
+  width:100%;
+  background:#1c1f24;
+  color:white;
+  border:1px solid #373a40;
+  border-radius:9px;
+  padding:14px;
+  color-scheme:dark;
+}
+.two {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+.tabs {
+  display:flex;
+  gap:8px;
+  margin-bottom:20px;
+}
+.tabs button {
+  flex:1;
+  border:1px solid #343434;
+  background:#1c1f24;
+  color:#ddd;
+  border-radius:9px;
+  padding:12px 5px;
+  font-size:12px;
+}
+.tabs button.selected {
+  background:var(--gold);
+  color:#151515;
+}
+.notice {
+  background:#202026;
+  border:1px solid #37312a;
+  border-radius:10px;
+  padding:15px;
+  color:#cfcfcf;
+  font-size:12px;
+  line-height:1.6;
+  margin:18px 0;
+}
+.bottom {
+  position:fixed;
+  bottom:0;
+  left:50%;
+  transform:translateX(-50%);
+  width:100%;
+  max-width:460px;
+  background:#101114;
+  border-top:1px solid #343434;
+  display:flex;
+  justify-content:space-around;
+  padding:12px 4px 18px;
+  z-index:10;
+}
+.bottom button {
+  background:none;
+  border:0;
+  color:#aaa;
+  font-size:11px;
+  min-width:65px;
+}
+.bottom button.active {color:var(--gold)}
+.bottom .ico {
+  display:block;
+  font-size:23px;
+  margin-bottom:6px;
+}
+@media(min-width:700px) {
+  .app {
+    margin:30px auto;
+    border:1px solid #343434;
+    border-radius:28px;
+    overflow:hidden;
+    min-height:800px;
+  }
+  .bottom {border-radius:0 0 25px 25px}
+}
+</style>
+</head>
+<body>
+
+<div class="app">
+
+<header class="top">
+<button class="menu" onclick="showScreen('home')">☰</button>
+<div class="brand">
+<div class="a">A</div>
+<div class="name">TRANSPORTATION</div>
+<div class="tag">LUXURY RENTALS & CHAUFFEUR</div>
+</div>
+<div class="partner">CROWN<br>BRIDGE<small>VISION</small></div>
+</header>
+
+<!-- HOME -->
+<div class="screen active" id="home">
+<div class="hero">
+<div class="eyebrow">A TRANSPORTATION</div>
+<h1>PREMIUM<br>TRANSPORTATION<br>FOR EVERY JOURNEY</h1>
+<p>Luxury vehicle rentals and professional chauffeur experiences.</p>
+</div>
+<div class="content">
+<div class="tiles">
+<div class="tile">
+<div class="tile-art">🚘</div>
+<div class="tile-body">
+<h3>RENT A CAR</h3>
+<p>Drive yourself</p>
+<button onclick="showScreen('rent')">Explore Rentals →</button>
+</div>
+</div>
+<div class="tile">
+<div class="tile-art">♛</div>
+<div class="tile-body">
+<h3>BOOK A CHAUFFEUR</h3>
+<p>Let us drive</p>
+<button onclick="showScreen('chauffeur')">Book Chauffeur →</button>
+</div>
+</div>
+</div>
+<h2>Luxury on Your Terms</h2>
+<p class="muted">Premium mobility for business, airport travel and special occasions.</p>
+<button class="gold" onclick="showScreen('rent')">Explore Our Vehicles</button>
+</div>
+</div>
+
+<!-- RENT -->
+<div class="screen" id="rent">
+<div class="content">
+<h2>Rent a Car</h2>
+<p class="muted">Find the right vehicle for your journey.</p>
+
+<div class="field">
+<label>Pickup Location</label>
+<input id="rLocation" placeholder="City or airport">
+</div>
+
+<div class="two">
+<div class="field">
+<label>Pickup Date</label>
+<input id="rStart" type="date">
+</div>
+<div class="field">
+<label>Return Date</label>
+<input id="rEnd" type="date">
+</div>
+</div>
+
+<button class="gold" onclick="showScreen('vehicles')">Search Vehicles</button>
+
+<h2 style="margin-top:30px">Featured Vehicles</h2>
+
+<div class="vehicle">
+<div class="vehicle-art">🚘</div>
+<div class="vehicle-info">
+<div class="vehicle-head">
+<div><h3>BMW 530e M Sport</h3><div class="muted">2019 · Luxury Sedan</div></div>
+</div>
+<div class="features"><span>Hybrid</span><span>Automatic</span><span>Premium</span></div>
+<button class="outline" onclick="selectVehicle('BMW 530e M Sport')">View Vehicle</button>
+</div>
+</div>
+</div>
+</div>
+
+<!-- VEHICLES -->
+<div class="screen" id="vehicles">
+<div class="content">
+<h2>Our Fleet</h2>
+<p class="muted">Select a vehicle to view details.</p>
+
+<div class="vehicle">
+<div class="vehicle-art">🚘</div>
+<div class="vehicle-info">
+<h3>BMW 530e M Sport</h3>
+<p class="muted">2019 · Luxury Plug-in Hybrid Sedan</p>
+<div class="features"><span>Automatic</span><span>Hybrid</span><span>Premium</span></div>
+<button class="gold" onclick="selectVehicle('BMW 530e M Sport')">View Details</button>
+</div>
+</div>
+
+<div class="vehicle">
+<div class="vehicle-art">🚙</div>
+<div class="vehicle-info">
+<h3>Chevrolet Equinox EV</h3>
+<p class="muted">Modern Electric SUV</p>
+<div class="features"><span>Electric</span><span>Automatic</span><span>SUV</span></div>
+<button class="gold" onclick="selectVehicle('Chevrolet Equinox EV')">View Details</button>
+</div>
+</div>
+
+<div class="vehicle">
+<div class="vehicle-art">🚗</div>
+<div class="vehicle-info">
+<h3>Chevrolet Trax RS</h3>
+<p class="muted">Sporty Compact SUV</p>
+<div class="features"><span>Automatic</span><span>Comfort</span><span>SUV</span></div>
+<button class="gold" onclick="selectVehicle('Chevrolet Trax RS')">View Details</button>
+</div>
+</div>
+</div>
+</div>
+
+<!-- DETAILS -->
+<div class="screen" id="details">
+<div class="vehicle-art" style="height:260px">🚘</div>
+<div class="content">
+<h2 id="detailName">BMW 530e M Sport</h2>
+<p class="muted">Premium comfort for every journey.</p>
+<div class="features">
+<span>Automatic</span>
+<span>Comfort</span>
+<span>Premium Experience</span>
+</div>
+<div class="notice">Rental prices and availability will be added later. No booking or payment is processed yet.</div>
+<button class="gold" onclick="showScreen('booking')">Request This Vehicle</button>
+</div>
+</div>
+
+<!-- CHAUFFEUR -->
+<div class="screen" id="chauffeur">
+<div class="content">
+<h2>Book a Chauffeur</h2>
+<p class="muted">Professional private transportation.</p>
+
+<div class="tabs">
+<button class="selected" onclick="setTrip(this,'Airport Transfer')">Airport</button>
+<button onclick="setTrip(this,'Hourly')">Hourly</button>
+<button onclick="setTrip(this,'Point to Point')">Point to Point</button>
+</div>
+
+<div class="field">
+<label>Pickup Location</label>
+<input id="cPickup" placeholder="Airport or address">
+</div>
+<div class="field">
+<label>Drop-off Location</label>
+<input id="cDrop" placeholder="Enter destination">
+</div>
+<div class="two">
+<div class="field">
+<label>Date</label>
+<input id="cDate" type="date">
+</div>
+<div class="field">
+<label>Time</label>
+<input id="cTime" type="time">
+</div>
+</div>
+<div class="field">
+<label>Passengers</label>
+<select id="cPassengers">
+<option>1</option><option>2</option><option>3</option>
+<option>4</option><option>5</option><option>6</option>
+</select>
+</div>
+<button class="gold" onclick="showScreen('chauffeurCars')">Search Chauffeur Vehicles</button>
+</div>
+</div>
+
+<!-- CHAUFFEUR VEHICLES -->
+<div class="screen" id="chauffeurCars">
+<div class="content">
+<h2>Select a Chauffeur Vehicle</h2>
+<p class="muted">Illustrative vehicle categories. Availability not confirmed.</p>
+
+<div class="vehicle">
+<div class="vehicle-art">🚘</div>
+<div class="vehicle-info">
+<h3>Executive Sedan</h3>
+<p class="muted">Luxury private transportation</p>
+<button class="gold" onclick="selectChauffeur('Executive Sedan')">Select Vehicle</button>
+</div>
+</div>
+
+<div class="vehicle">
+<div class="vehicle-art">🚙</div>
+<div class="vehicle-info">
+<h3>Luxury SUV</h3>
+<p class="muted">Comfortable group transportation</p>
+<button class="gold" onclick="selectChauffeur('Luxury SUV')">Select Vehicle</button>
+</div>
+</div>
+</div>
+</div>
+
+<!-- BOOKING -->
+<div class="screen" id="booking">
+<div class="content">
+<h2>Reservation Request</h2>
+<p class="muted">Review your selection and enter your details.</p>
+<div class="notice" id="selection">No vehicle selected.</div>
+<form id="bookingForm">
+<div class="field">
+<label>Full Name</label>
+<input id="customer" required placeholder="Your full name">
+</div>
+<div class="field">
+<label>Email Address</label>
+<input id="email" type="email" required placeholder="Your email">
+</div>
+<div class="field">
+<label>Phone Number</label>
+<input id="phone" type="tel" placeholder="Your phone number">
+</div>
+<button class="gold" type="submit">Preview Request</button>
+</form>
+<div class="notice" id="result">Demo only. No request is sent.</div>
+</div>
+</div>
+
+<!-- ACCOUNT -->
+<div class="screen" id="account">
+<div class="content">
+<h2>My Account</h2>
+<p class="muted">Your future A Transportation account.</p>
+<div class="notice">Customer login, payment methods, and booking history will be added in a later version.</div>
+</div>
+</div>
+
+<nav class="bottom">
+<button onclick="showScreen('home')" class="active" data-nav="home"><span class="ico">⌂</span>Home</button>
+<button onclick="showScreen('vehicles')" data-nav="vehicles"><span class="ico">🚘</span>Vehicles</button>
+<button onclick="showScreen('booking')" data-nav="booking"><span class="ico">▣</span>Bookings</button>
+<button onclick="showScreen('account')" data-nav="account"><span class="ico">♙</span>Account</button>
+</nav>
+
+</div>
+
+<script>
+let chosenVehicle="";
+let chosenService="Car Rental";
+let tripType="Airport Transfer";
+
+function showScreen(id){
+ document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
+ document.getElementById(id).classList.add("active");
+ document.querySelectorAll(".bottom button").forEach(b=>{
+  b.classList.toggle("active",b.dataset.nav===id);
+ });
+ window.scrollTo(0,0);
+}
+
+function selectVehicle(name){
+ chosenVehicle=name;
+ chosenService="Car Rental";
+ document.getElementById("detailName").textContent=name;
+ document.getElementById("selection").textContent="Car Rental: "+name;
+ showScreen("details");
+}
+
+function setTrip(button,type){
+ tripType=type;
+ document.querySelectorAll(".tabs button").forEach(b=>b.classList.remove("selected"));
+ button.classList.add("selected");
+}
+
+function selectChauffeur(name){
+ chosenVehicle=name;
+ chosenService="Chauffeur Service";
+ document.getElementById("selection").textContent=tripType+" · "+name;
+ showScreen("booking");
+}
+
+document.getElementById("bookingForm").addEventListener("submit",function(e){
+ e.preventDefault();
+ const name=document.getElementById("customer").value.trim();
+ const email=document.getElementById("email").value.trim();
+ const selection=chosenVehicle||"No vehicle selected";
+ document.getElementById("result").textContent=
+ "Preview for "+name+" ("+email+"): "+chosenService+
+ " — "+selection+". This is a demo; nothing has been sent or booked.";
+});
+</script>
+
+</body>
+</html>
