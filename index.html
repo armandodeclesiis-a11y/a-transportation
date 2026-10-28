@@ -511,31 +511,31 @@ input,select {
 <div class="notice" id="selection">No vehicle selected.</div>
 <form id="bookingForm" action="https://formsubmit.co/armandodeclesiis@gmail.com" method="POST"><div class="field">
   <label>Pickup Location</label>
-  <input type="text" id="pickupLocation" required placeholder="Enter pickup address">
+  <input type="text" id="pickupLocation" name="pickupLocation" required placeholder="Enter pickup address">
 </div>
 <div class="field">
   <label>Return Location</label>
-  <input type="text" id="returnLocation" required placeholder="Enter return address">
+  <input type="text" id="returnLocation" name="returnLocation" required placeholder="Enter return address">
 </div><div class="field">
 <label>Full Name</label>
-<input id="customer" required placeholder="Your full name">
+<input id="customer" name="customer" required placeholder="Your full name">
 </div>
 <div class="field">
 <label>Email Address</label>
-<input id="email" type="email" required placeholder="Your email">
+<input id="email" name="mail" type="email" required placeholder="Your email">
 </div>
 <div class="field">
 <label>Phone Number</label>
-<input id="phone" type="tel" placeholder="Your phone number">
+<input id="phone" name="phone" type="tel" placeholder="Your phone number">
 </div>
 
 <div class="field">
   <label>Pickup Date</label>
-  <input type="date" id="pickup" required>
+  <input type="date" id="pickup" name="pickup" required>
 </div>
 <div class="field">
   <label>Return Date</label>
-  <input type="date" id="returnDate" required>
+  <input type="date" id="returnDate" name="returnDate" required>
 </div>
 
 <button class="gold" type="submit">Submit Reservation</button>
