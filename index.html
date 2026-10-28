@@ -582,7 +582,8 @@ function selectVehicle(name) {
   document.getElementById("selection").textContent = "Car Rental: " + name;
 
   showScreen("details");
-
+document.getElementById("details").scrollTop = 0;
+window.scrollTo(0, 0);
   setTimeout(() => {
     document.querySelector("#details button.gold")
       .scrollIntoView({ behavior: "smooth", block: "center" });
