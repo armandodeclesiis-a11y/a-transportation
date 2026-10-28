@@ -608,7 +608,6 @@ function selectChauffeur(name){
 <script>
 document.getElementById("bookingForm").addEventListener("submit", async function(event) {
 const email = document.getElementById("email").value;
-  event.preventDefault();
   emailjs.send("service_eopwun2", "template_nwc2u9g", {
     mail: email
   }).catch(console.error);
