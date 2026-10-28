@@ -584,6 +584,14 @@ function selectVehicle(name){
  chosenService="Car Rental";
  document.getElementById("detailName").textContent=name;
  document.getElementById("selection").textContent="Car Rental: "+name;
+  const carCard = [...document.querySelectorAll(".vehicle")]
+  .find(card => card.querySelector("button")?.getAttribute("onclick")?.includes(name));
+
+const carImage = carCard?.querySelector("img");
+
+document.getElementById("detailPhoto").innerHTML = carImage
+  ? `<img src="${carImage.src}" style="width:100%;height:100%;object-fit:contain;">`
+  : "🚘";
  showScreen("details");
 }
 
