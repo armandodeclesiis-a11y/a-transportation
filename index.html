@@ -601,5 +601,14 @@ function selectChauffeur(name){
 </script>
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>emailjs.init("0dG-VBS_6rgipQeuT");</script>
+
+<script>
+document.getElementById("bookingForm").addEventListener("submit", function() {
+  const email = document.getElementById("email").value;
+  emailjs.send("service_eopwun2", "template_nwc2u9g", {
+    mail: email
+  }).catch(console.error);
+});
+</script>
 </body>
 </html>
