@@ -574,22 +574,20 @@ function showScreen(id){
  window.scrollTo(0,0);
 }
 
-function selectVehicle(name){
- chosenVehicle=name;
- chosenService="Car Rental";
- document.getElementById("detailName").textContent=name;
- document.getElementById("selection").textContent="Car Rental: "+name;
-  const carCard = [...document.querySelectorAll(".vehicle")]
-  .find(card => card.querySelector("button")?.getAttribute("onclick")?.includes(name));
+function selectVehicle(name) {
+  chosenVehicle = name;
+  chosenService = "Car Rental";
 
-const carImage = carCard?.querySelector("img");
+  document.getElementById("detailName").textContent = name;
+  document.getElementById("selection").textContent = "Car Rental: " + name;
 
-document.getElementById("detailPhoto").innerHTML = carImage
-  ? `<img src="${carImage.src}" style="width:100%;height:100%;object-fit:contain;">`
-  : "🚘";
- showScreen("details");
+  showScreen("details");
+
+  setTimeout(() => {
+    document.querySelector("#details button.gold")
+      .scrollIntoView({ behavior: "smooth", block: "center" });
+  }, 150);
 }
-
 function setTrip(button,type){
  tripType=type;
  document.querySelectorAll(".tabs button").forEach(b=>b.classList.remove("selected"));
