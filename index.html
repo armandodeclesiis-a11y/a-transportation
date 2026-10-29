@@ -691,10 +691,10 @@ document.getElementById("bookingForm").addEventListener("submit", async function
   email: email,
   phone: form.querySelector("#phone").value,
   vehicle: document.getElementById("selection").textContent,
-  pickup: document.getElementById("rLocation").value,
-  return: document.getElementById("rLocation").value,
-  pickup_date: document.getElementById("rStart").value,
-  return_date: document.getElementById("rEnd").value
+  pickup: document.getElementById("pickupLocation").value,
+  return: document.getElementById("returnLocation").value,
+  pickup_date: document.getElementById("pickup").value,
+  return_date: document.getElementById("returnDate").value
 });
     try {
   await emailjs.send("service_eopwun2", "template_nwc2u9g", {
