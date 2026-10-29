@@ -311,6 +311,35 @@ input,select {
   <button onclick="showScreen('booking'); document.getElementById('navMenu').hidden=true">Booking</button>
   <button onclick="showScreen('account'); document.getElementById('navMenu').hidden=true">Account</button>
 </div>
+  <style>
+#navMenu {
+  position: absolute;
+  top: 75px;
+  left: 20px;
+  background: #111;
+  border: 1px solid #b9975b;
+  border-radius: 12px;
+  padding: 12px;
+  z-index: 9999;
+  box-shadow: 0 8px 25px #0009;
+}
+#navMenu button {
+  display: block;
+  width: 180px;
+  padding: 14px;
+  margin: 4px 0;
+  background: transparent;
+  color: #d4af77;
+  border: none;
+  text-align: left;
+  font-size: 15px;
+  cursor: pointer;
+}
+#navMenu button:hover {
+  background: #26211a;
+  border-radius: 6px;
+}
+</style>
 <div class="brand">
 <div class="a">A</div>
 <div class="name">TRANSPORTATION</div>
