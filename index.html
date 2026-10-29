@@ -592,7 +592,12 @@ input,select {
 <div class="content">
 <h2>My Account</h2>
 <p class="muted">Your future A Transportation account.</p>
-<div class="notice">Customer login, payment methods, and booking history will be added in a later version.</div>
+<div class="notice">Welcome to A Transportation. Manage your profile and reservation requests here.</div>
+  <h3>My Profile</h3>
+<input type="text" placeholder="Full Name">
+<input type="email" placeholder="Email Address">
+<input type="tel" placeholder="Phone Number">
+ <button class="gold" type="button" onclick="saveProfile()">Save Profile</button>
 </div>
 </div>
 
@@ -714,6 +719,20 @@ document.getElementById("bookingForm").addEventListener("submit", async function
     button.textContent = "Submit Reservation";
   }
 });
+
+function saveProfile() {
+  const inputs = document.querySelectorAll("#account input");
+  const profile = {
+    name: inputs[0].value,
+    email: inputs[1].value,
+    phone: inputs[2].value
+  };
+
+  localStorage.setItem("aTransportationProfile", JSON.stringify(profile));
+  alert("Profile saved successfully!");
+}
+
+
 </script>
 
 </body>
