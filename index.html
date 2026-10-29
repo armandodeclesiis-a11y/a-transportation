@@ -647,7 +647,8 @@ function selectVehicle(name) {
       : "🚘";
   }
 
-  showScreen("details");
+  document.getElementById("detailName").textContent = name;
+showScreen("details");
 }
 function setTrip(button,type){
  tripType=type;
