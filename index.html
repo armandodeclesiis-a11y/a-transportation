@@ -686,29 +686,18 @@ document.getElementById("bookingForm").addEventListener("submit", async function
   button.textContent = "Sending...";
 
   try {
-    const response = await fetch(
-      "https://formsubmit.co/ajax/armandodeclesiis@gmail.com",
-      {
-        method: "POST",
-        body: new FormData(form),
-        headers: { "Accept": "application/json" }
-      }
-    );
+     await emailjs.send("service_eopwun2", "template_hu0let5", {
+  name: form.querySelector("#customer").value,
+  email: email,
+  phone: form.querySelector("#phone").value,
+  vehicle: document.getElementById("selection").textContent,
+  pickup: form.querySelector("#pickup").value,
+  return: form.querySelector("#return").value,
+  pickup_date: form.querySelector("#pickup_date").value,
+  return_date: form.querySelector("#return_date").value
+});
 
-    if (!response.ok) throw new Error("Reservation failed");
-
-    const result = await response.json();
-    if (result.success !== true && result.success !== "true") {
-      throw new Error("Reservation failed");
-    }
-
-    try {
-      await emailjs.send("service_eopwun2", "template_hu0let5", {
-        mail: email
-      });
-    } catch (emailError) {
-      console.error("Customer email failed:", emailError);
-    }
+     
 
     window.location.href = "Thank-you.html";
   } catch (error) {
