@@ -304,7 +304,13 @@ input,select {
 <div class="app">
 
 <header class="top">
-<button class="menu" onclick="showScreen('home')">☰</button>
+<button class="menu" onclick="document.getElementById('navMenu').hidden = !document.getElementById('navMenu').hidden">☰</button>
+  <div id="navMenu" hidden>
+  <button onclick="showScreen('home'); document.getElementById('navMenu').hidden=true">Home</button>
+  <button onclick="showScreen('vehicles'); document.getElementById('navMenu').hidden=true">Vehicles</button>
+  <button onclick="showScreen('booking'); document.getElementById('navMenu').hidden=true">Booking</button>
+  <button onclick="showScreen('account'); document.getElementById('navMenu').hidden=true">Account</button>
+</div>
 <div class="brand">
 <div class="a">A</div>
 <div class="name">TRANSPORTATION</div>
