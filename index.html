@@ -642,6 +642,31 @@ input,select {
 <button onclick="showScreen('booking')" data-nav="booking"><span class="ico">▣</span>Bookings</button>
 <button onclick="showScreen('account')" data-nav="account"><span class="ico">♙</span>Account</button>
 </nav>
+  <style>
+.bottom {
+  background: #0b0b0b;
+  border-top: 1px solid #b9975b;
+}
+.bottom button {
+  background: transparent;
+  color: #b8a78d;
+  border: none;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+.bottom button .ico {
+  filter: grayscale(1);
+  font-size: 22px;
+  opacity: 0.8;
+}
+.bottom button.active {
+  color: #d4af77;
+}
+.bottom button.active .ico {
+  filter: grayscale(1) sepia(1);
+  opacity: 1;
+}
+</style>
 
 </div>
 
