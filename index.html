@@ -467,7 +467,7 @@ input,select {
 </div>
 
 <!-- DETAILS -->
-<div class="screen" id="details">
+<div class="vehicle-art" id="detailPhoto" style="height:auto;min-height:0;display:block;background:none;"></div>
 <div class="vehicle-art" id="detailPhoto" style="height:260px; display:flex; align-items:center; justify-content:center;"></div><h2 id="detailName">BMW 530e M Sport</h2>
   <div class="notice">Rental prices and availability will be added later. No booking or payment is processed yet.</div>
 <button class="gold" onclick="showScreen('booking')">Request This Vehicle</button>
@@ -643,7 +643,7 @@ function selectVehicle(name) {
 
   if (photo) {
     photo.innerHTML = carImage
-      ? `<img src="${carImage.src}" style="width:100%;height:260px;object-fit:contain;">`
+      ? `<img src="${carImage.src}" style="width:100%;height:auto;display:block;object-fit:contain;">`
       : "🚘";
   }
 
