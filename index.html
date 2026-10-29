@@ -390,58 +390,82 @@ input,select {
 </div>
 </div>
 
+
 <!-- VEHICLES -->
 <div class="screen" id="vehicles">
-<div class="content">
-<h2>Our Fleet</h2>
-<p class="muted">Select a vehicle to view details.</p>
+  <div class="content">
+    <h2>Our Fleet</h2>
+    <p class="muted">Select a vehicle to view details.</p>
 
-<div class="vehicle">
-<div class="vehicle-art"><img src="images/68456E62-EDB4-470F-B2B0-72BECE94105D.PNG" style="width:100%;border-radius:12px;"></div>
-<div class="vehicle-info">
-<h3>BMW 530e M Sport</h3>
-<p class="muted">2019 · Luxury Plug-in Hybrid Sedan</p>
-<div class="features"><span>Automatic</span><span>Hybrid</span><span>Premium</span></div>
-<button class="gold" onclick="selectVehicle('BMW 530e M Sport')">View Details</button>
-</div>
-</div>
+    <style>
+      #vehicles .vehicle {
+        overflow: hidden;
+        margin-bottom: 20px;
+        border-radius: 14px;
+      }
+      #vehicles .vehicle-art {
+        height: auto !important;
+        display: block !important;
+        background: none !important;
+      }
+      #vehicles .vehicle-art img {
+        display: block;
+        width: 100% !important;
+        height: auto !important;
+        max-height: none !important;
+        object-fit: contain !important;
+      }
+      #vehicles .vehicle-info {
+        padding: 16px;
+      }
+      #vehicles .content {
+        padding-bottom: 110px;
+      }
+    </style>
 
-
-<div class="vehicle">
-  <div class="vehicle-art">
-    <img src="images/D42C8558-2AD5-4793-98B1-53017E8C9246.PNG" style="width:100%;height:100%;object-fit:contain;">
-  </div>
-  <div class="vehicle-info">
-    <h3>Chevrolet Equinox EV</h3>
-    <p class="muted">2026 - Electric SUV</p>
-    <div class="features">
-      <span>Automatic</span>
-      <span>Electric</span>
-      <span>SUV</span>
+    <div class="vehicle">
+      <div class="vehicle-art">
+        <img src="images/68456E62-EDB4-470F-B2B0-72BECE94105D.PNG" alt="BMW 530e M Sport">
+      </div>
+      <div class="vehicle-info">
+        <h3>BMW 530e M Sport</h3>
+        <p class="muted">2019 · Luxury Plug-in Hybrid Sedan</p>
+        <div class="features">
+          <span>Automatic</span><span>Hybrid</span><span>Premium</span>
+        </div>
+        <button class="gold" onclick="selectVehicle('BMW 530e M Sport')">View Details</button>
+      </div>
     </div>
-    <button class="gold" onclick="selectVehicle('Chevrolet Equinox EV')">View Details</button>
-  </div>
-</div>
 
-
-<div class="vehicle">
-  <div class="vehicle-art">
-    <img src="images/51F9BE8D-81FB-4B98-A422-D8CF028DD55C.PNG"
-         style="width:100%;height:260px;object-fit:contain;border-radius:12px;">
-  </div>
-  <div class="vehicle-info">
-    <h3>Chevrolet Trax RS</h3>
-    <p class="muted">Sporty Compact SUV</p>
-    <div class="features">
-      <span>Automatic</span>
-      <span>Comfort</span>
-      <span>SUV</span>
+    <div class="vehicle">
+      <div class="vehicle-art">
+        <img src="images/D42C8558-2AD5-4793-98B1-53017E8C9246.PNG" alt="Chevrolet Equinox EV">
+      </div>
+      <div class="vehicle-info">
+        <h3>Chevrolet Equinox EV</h3>
+        <p class="muted">2026 · Electric SUV</p>
+        <div class="features">
+          <span>Automatic</span><span>Electric</span><span>SUV</span>
+        </div>
+        <button class="gold" onclick="selectVehicle('Chevrolet Equinox EV')">View Details</button>
+      </div>
     </div>
-    <button class="gold" onclick="selectVehicle('Chevrolet Trax RS')">View Details</button>
+
+    <div class="vehicle">
+      <div class="vehicle-art">
+        <img src="images/51F9BE8D-81FB-4B98-A422-D8CF028DD55C.PNG" alt="Chevrolet Trax RS">
+      </div>
+      <div class="vehicle-info">
+        <h3>Chevrolet Trax RS</h3>
+        <p class="muted">Sporty Compact SUV</p>
+        <div class="features">
+          <span>Automatic</span><span>Comfort</span><span>SUV</span>
+        </div>
+        <button class="gold" onclick="selectVehicle('Chevrolet Trax RS')">View Details</button>
+      </div>
+    </div>
+
   </div>
-</div>
-</div>
-</div>
 </div>
 
 <!-- DETAILS -->
