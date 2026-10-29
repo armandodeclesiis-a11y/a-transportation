@@ -692,9 +692,9 @@ document.getElementById("bookingForm").addEventListener("submit", async function
   phone: form.querySelector("#phone").value,
   vehicle: document.getElementById("selection").textContent,
   pickup: form.querySelector("#pickup").value,
-  return: form.querySelector("#return").value,
-  pickup_date: form.querySelector("#pickup_date").value,
-  return_date: form.querySelector("#return_date").value
+  return: form.querySelector("#return")?.value || "",
+  pickup_date: form.querySelector("#pickup_date")?.value || "",
+  return_date: form.querySelector("#return_date")?.value || ""
 });
 
      
