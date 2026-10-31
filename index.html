@@ -581,11 +581,16 @@ input,select {
 
 <div class="field">
 <label>Pickup Location</label>
-<input id="cPickup" placeholder="Airport or address">
+<input id="cPickup" placeholder="Airport or address" autocomplete="off" minlength="3">
+  
+<div id="pickupSuggestions"></div>
+
 </div>
 <div class="field">
-<label>Drop-off Location</label>
-<input id="cDrop" placeholder="Enter destination">
+<input id="cDrop" placeholder="Enter destination" autocomplete="off" minlength="3">
+  
+<div id="dropSuggestions"></div>
+
 </div>
   
 <div class="field" id="hourlyField" style="display:none;">
@@ -915,6 +920,77 @@ document.getElementById("chauffeurSelection").textContent=
   document.querySelector("#chauffeur .tabs button.selected")?.textContent.trim()+" · "+name; showScreen("chauffeurBooking");
 }
 
+
+const GEOAPIFY_KEY = "PASTE_YOUR_NEW_API_KEY_HERE";
+
+function setupAddressAutocomplete(inputId, listId) {
+  const input = document.getElementById(inputId);
+  const list = document.getElementById(listId);
+  if (!input || !list) return;
+
+  let timer;
+  let controller;
+
+  list.style.cssText = "background:#1d2025;border-radius:10px;overflow:hidden;";
+
+  input.addEventListener("input", () => {
+    clearTimeout(timer);
+    if (controller) controller.abort();
+    list.replaceChildren();
+
+    const query = input.value.trim();
+    if (query.length < 3) return;
+
+    timer = setTimeout(async () => {
+      controller = new AbortController();
+
+      try {
+        const url = new URL("https://api.geoapify.com/v1/geocode/autocomplete");
+        url.searchParams.set("text", query);
+        url.searchParams.set("filter", "countrycode:us");
+        url.searchParams.set("limit", "5");
+        url.searchParams.set("apiKey", GEOAPIFY_KEY);
+
+        const response = await fetch(url, {
+          signal: controller.signal
+        });
+        if (!response.ok) throw new Error("Address search failed");
+
+        const data = await response.json();
+        if (input.value.trim() !== query) return;
+
+        list.replaceChildren();
+
+        for (const place of data.features || []) {
+          const address = place.properties.formatted;
+          if (!address) continue;
+
+          const item = document.createElement("button");
+          item.type = "button";
+          item.textContent = address;
+          item.style.cssText =
+            "display:block;width:100%;padding:12px;text-align:left;" +
+            "background:#1d2025;color:white;border:0;" +
+            "border-bottom:1px solid #444;cursor:pointer;";
+
+          item.addEventListener("click", () => {
+            input.value = address;
+            list.replaceChildren();
+          });
+
+          list.appendChild(item);
+        }
+      } catch (error) {
+        if (error.name !== "AbortError") {
+          console.error("Autocomplete error:", error);
+        }
+      }
+    }, 400);
+  });
+}
+
+setupAddressAutocomplete("cPickup", "pickupSuggestions");
+setupAddressAutocomplete("cDrop", "dropSuggestions");
 
 </script>
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
