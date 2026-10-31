@@ -821,9 +821,25 @@ function selectVehicle(name) {
 showScreen("details");
 }
 function setTrip(button,type){
- tripType=type;
- document.querySelectorAll(".tabs button").forEach(b=>b.classList.remove("selected"));
- button.classList.add("selected");
+ 
+  tripType=type;
+  document.querySelectorAll(".tabs button").forEach(b=>b.classList.remove("selected"));
+  button.classList.add("selected");
+
+  const pickup=document.getElementById("cPickup");
+  const drop=document.getElementById("cDrop");
+
+  if(type==="Airport Transfer"){
+    pickup.placeholder="Airport or pickup address";
+    drop.placeholder="Drop-off destination";
+  } else if(type==="Hourly"){
+    pickup.placeholder="Enter pickup address";
+    drop.placeholder="Enter number of hours (e.g. 4 hours)";
+  } else {
+    pickup.placeholder="Enter pickup address";
+    drop.placeholder="Enter destination address";
+  }
+
 }
 
 function selectChauffeur(name){
