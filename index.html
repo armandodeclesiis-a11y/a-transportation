@@ -1033,9 +1033,9 @@ if (button) button.textContent = "Sending...";
 
   try {
      await emailjs.send("service_eopwun2", "template_hu0let5", {
-  name: form.querySelector("#customer").value,
+  name: document.getElementById("customer")?.value || "",
   email: email,
-  phone: form.querySelector("#phone").value,
+  phone: document.getElementById("phone")?.value || "",
   vehicle: document.getElementById("selection").textContent,
   pickup: document.getElementById("pickupLocation").value,
   return: document.getElementById("returnLocation").value,
