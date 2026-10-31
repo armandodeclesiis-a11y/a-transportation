@@ -849,8 +849,8 @@ function setTrip(button,type){
 function selectChauffeur(name){
  chosenVehicle=name;
  chosenService="Chauffeur Service";
- document.getElementById("chauffeurSelection").textContent=tripType+" · "+name;
- showScreen("chauffeurBooking");
+document.getElementById("chauffeurSelection").textContent=
+  document.querySelector("#chauffeur .tabs button.selected")?.textContent.trim()+" · "+name; showScreen("chauffeurBooking");
 }
 
 
