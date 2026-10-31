@@ -933,8 +933,8 @@ function selectChauffeur(name) {
   const pickup = document.getElementById("cPickup");
 const dropoff = document.getElementById("cDropoff");
 
-document.querySelector('[name="Pickup Location"]').value = pickup.value;
-document.querySelector('[name="Drop-off Location"]').value = dropoff.value;
+if (pickup) document.querySelector('[name="Pickup Location"]').value = pickup.value;
+if (dropoff) document.querySelector('[name="Drop-off Location"]').value = dropoff.value;
  chosenVehicle=name;
  chosenService="Chauffeur Service";
 document.getElementById("chauffeurSelection").textContent=
