@@ -565,6 +565,20 @@ input,select {
 <button onclick="setTrip(this,'Point to Point')">Point to Point</button>
 </div>
 
+<div class="field" id="flightInfo">
+  <label>Flight Type</label>
+  <select id="flightType">
+    <option value="Arrival">Airport Arrival</option>
+    <option value="Departure">Airport Departure</option>
+  </select>
+
+  <label>Airline</label>
+  <input id="airline" placeholder="Airline name">
+
+  <label>Flight Number</label>
+  <input id="flightNumber" placeholder="Example: UA1234">
+</div>
+
 <div class="field">
 <label>Pickup Location</label>
 <input id="cPickup" placeholder="Airport or address">
@@ -868,6 +882,9 @@ showScreen("details");
 function setTrip(button,type){
  
   tripType=type;
+  
+document.getElementById("flightInfo").style.display = type === "Airport Transfer" ? "block" : "none";
+
   
 document.getElementById("hourlyField").style.display =
   type === "Hourly" ? "block" : "none";
