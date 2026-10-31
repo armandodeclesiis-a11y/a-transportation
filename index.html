@@ -410,11 +410,19 @@ input,select {
 <div class="content">
 <h2>Rent a Car</h2>
 <p class="muted">Find the right vehicle for your journey.</p>
+ 
+<div class="field">
+  <label>Pickup Location</label>
+  <input id="rLocation" placeholder="Enter pickup address" autocomplete="off">
+  <div id="rPickupSuggestions"></div>
+</div>
 
 <div class="field">
-<label>Pickup Location</label>
-<input id="rLocation" placeholder="City or airport">
+  <label>Return Location</label>
+  <input id="rReturnLocation" placeholder="Enter return address" autocomplete="off">
+  <div id="rReturnSuggestions"></div>
 </div>
+
 
 <div class="two">
 <div class="field">
@@ -991,6 +999,10 @@ function setupAddressAutocomplete(inputId, listId) {
 
 setupAddressAutocomplete("cPickup", "pickupSuggestions");
 setupAddressAutocomplete("cDrop", "dropSuggestions");
+  
+setupAddressAutocomplete("rLocation", "rPickupSuggestions");
+setupAddressAutocomplete("rReturnLocation", "rReturnSuggestions");
+
 
 </script>
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
