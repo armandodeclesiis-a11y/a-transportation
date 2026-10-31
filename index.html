@@ -929,17 +929,28 @@ document.getElementById("hourlyField").style.display =
 
 }
 
+
 function selectChauffeur(name) {
   const pickup = document.getElementById("cPickup");
-const dropoff = document.getElementById("cDropoff");
+  const dropoff = document.getElementById("cDropoff");
 
-if (pickup) document.querySelector('[name="Pickup Location"]').value = pickup.value;
-if (dropoff) document.querySelector('[name="Drop-off Location"]').value = dropoff.value;
- chosenVehicle=name;
- chosenService="Chauffeur Service";
-document.getElementById("chauffeurSelection").textContent=
-  document.querySelector("#chauffeur .tabs button.selected")?.textContent.trim()+" · "+name; showScreen("chauffeurBooking");
+  const booking = document.getElementById("chauffeurBooking");
+
+  const bookingPickup = booking.querySelector('[name="Pickup Location"]');
+  const bookingDropoff = booking.querySelector('[name="Drop-off Location"]');
+
+  if (bookingPickup) bookingPickup.value = pickup?.value || "";
+  if (bookingDropoff) bookingDropoff.value = dropoff?.value || "";
+
+  chosenVehicle = name;
+  chosenService = "Chauffeur Service";
+
+  document.getElementById("chauffeurSelection").textContent =
+    (document.querySelector("#chauffeur .tabs button.selected")?.textContent.trim() || "Chauffeur") + " - " + name;
+
+  showScreen("chauffeurBooking");
 }
+  
 
 
 const GEOAPIFY_KEY = "ef2791ff32664666b9d555ce2a930d17";
