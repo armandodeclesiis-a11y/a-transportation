@@ -1141,5 +1141,46 @@ if (booking) {
 });
 </script>
 
+<script>
+document.getElementById("chauffeurFinalForm")
+  ?.addEventListener("submit", async function(event) {
+    event.preventDefault();
+
+    const form = event.currentTarget;
+    const button = form.querySelector('button[type="submit"]');
+    const email = form.querySelector('[name="email"]')?.value.trim();
+
+    if (!email) {
+      alert("Please enter your email address.");
+      return;
+    }
+
+    if (button) {
+      button.disabled = true;
+      button.textContent = "Sending...";
+    }
+
+    try {
+      await emailjs.send(
+        "service_eopwun2",
+        "template_nwc2u9g",
+        { mail: email }
+      );
+
+      // Send the reservation to A Transportation.
+      form.submit();
+
+    } catch (error) {
+      console.error("Chauffeur confirmation email failed:", error);
+      alert("Unable to send the customer confirmation. Please try again.");
+
+      if (button) {
+        button.disabled = false;
+        button.textContent = "Request Chauffeur Service";
+      }
+    }
+  });
+</script>
+
 </body>
 </html>
