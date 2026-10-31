@@ -602,15 +602,14 @@ input,select {
 <p class="muted">Review your selection and enter your details.</p>
 <div class="notice" id="selection">No vehicle selected.</div>
 <form id="bookingForm" action="https://formsubmit.co/armandodeclesiis@gmail.com" method="POST"><div class="field">
-  <input type="hidden" name="Service" value="Chauffeur Service">
 
 <input type="text" id="pickupLocation" name="pickupLocation" required placeholder="Enter pickup address">
 
 <input type="hidden" name="_next" value="https://armandodeclesiis-a11y.github.io/a-transportation/Thank-you.html">
 </div>
 <div class="field">
-  <label>Dop-off Location</label>
-  <input type="text" id="returnLocation" name="returnLocation" required placeholder="Enter destination address">
+  <label>Return Location</label>
+  <input type="text" id="returnLocation" name="returnLocation" required placeholder="Enter return address">
 </div><div class="field">
 <label>Full Name</label>
 <input id="customer" name="customer" required placeholder="Your full name">
@@ -623,44 +622,17 @@ input,select {
 <label>Phone Number</label>
 <input id="phone" name="phone" type="tel" placeholder="Your phone number">
 </div>
-  <div class="field">
-  <label>Number of Passengers</label>
-  <select name="Passengers" required>
-    <option value="">Select passengers</option>
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-    <option value="4">4</option>
-    <option value="5">5</option>
-    <option value="6">6</option>
-    <option value="7">7</option>
-  </select>
-</div>
-  <div class="field">
-  <label>Number of Bags</label>
-  <select name="Luggage">
-    <option value="0">No luggage</option>
-    <option value="1">1 bag</option>
-    <option value="2">2 bags</option>
-    <option value="3">3 bags</option>
-    <option value="4+">4 or more bags</option>
-  </select>
-</div>
-  <div class="field">
-  <label>Flight Number (Airport Transfers Only)</label>
-  <input type="text" name="Flight Number" placeholder="Example: AA1234">
-</div>
-
 <div class="field">
+  
   <label>Pickup Date</label>
   <input type="date" id="pickup" name="pickup" required>
 </div>
 <div class="field">
-  <label>Pickup Time</label>
-  <input type="Time" id="returnDate" name="returnDate" required>
+  <label>Return Date</label>
+<input type="date" id="returnDate" name="returnDate" required>
 </div>
 
-<button class="gold" type="submit">Request Chauffeur Service</button>
+<button class="gold" type="submit">Submit Reservation</button>
 </form>
 <div class="notice" id="result"></div>
 <div id="bookingSuccess" class="notice" style="display:none; text-align:center;">  <h2>Thank You!</h2>
