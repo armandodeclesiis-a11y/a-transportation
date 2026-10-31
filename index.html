@@ -1025,11 +1025,11 @@ document.getElementById("bookingForm").addEventListener("submit", async function
   event.preventDefault();
 
   const form = event.currentTarget;
-  const button = form.querySelector('button[type="submit"]');
+  const button = form.querySelector('button:not([type="button"])');
   const email = document.getElementById("email").value;
 
-  button.disabled = true;
-  button.textContent = "Sending...";
+  if (button) button.disabled = true;
+if (button) button.textContent = "Sending...";
 
   try {
      await emailjs.send("service_eopwun2", "template_hu0let5", {
@@ -1057,8 +1057,10 @@ document.getElementById("bookingForm").addEventListener("submit", async function
     alert("Unable to send reservation. Please try again.");
     console.error(error);
   } finally {
-    button.disabled = false;
-    button.textContent = "Submit Reservation";
+    if (button) {
+  button.disabled = false;
+  button.textContent = "Submit Reservation";
+}
   }
 });
 
