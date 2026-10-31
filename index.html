@@ -678,7 +678,58 @@ input,select {
       Your selected chauffeur vehicle
     </div>
 
-    <form action="https://formsubmit.co/armandodeclesiis@gmail.com" method="POST">
+    
+<form id="chauffeurFinalForm"
+      action="https://formsubmit.co/armandodeclesiis@gmail.com"
+      method="POST">
+
+  <input type="hidden" name="Service" value="Chauffeur Service">
+  <input type="hidden" name="_subject" value="New Chauffeur Reservation">
+
+  <input type="hidden" name="Pickup Location" id="finalPickup">
+  <input type="hidden" name="Drop-off Location" id="finalDrop">
+  <input type="hidden" name="Pickup Date" id="finalDate">
+  <input type="hidden" name="Pickup Time" id="finalTime">
+  <input type="hidden" name="Passengers" id="finalPassengers">
+  <input type="hidden" name="Flight Number" id="finalFlight">
+  <input type="hidden" name="Vehicle" id="finalVehicle">
+  <input type="hidden" name="Trip Type" id="finalTripType">
+  <input type="hidden" name="Hours" id="finalHours">
+
+  <h3>Trip Summary</h3>
+  <p id="chauffeurTripSummary"></p>
+
+  <div class="field">
+    <label>Full Name</label>
+    <input name="Full Name" required placeholder="Your full name">
+  </div>
+
+  <div class="field">
+    <label>Email Address</label>
+    <input type="email" name="email" required placeholder="Your email">
+  </div>
+
+  <div class="field">
+    <label>Phone Number</label>
+    <input type="tel" name="Phone Number" required placeholder="Your phone number">
+  </div>
+
+  <div class="field">
+    <label>Luggage</label>
+    <select name="Luggage">
+      <option>None</option>
+      <option>1 bag</option>
+      <option>2 bags</option>
+      <option>3 bags</option>
+      <option>4+ bags</option>
+    </select>
+  </div>
+
+  <button class="gold" type="submit">
+    Request Chauffeur Service
+  </button>
+</form>
+
       <input type="hidden" name="Service" value="Chauffeur Service">
       <input type="hidden" name="_subject" value="New Chauffeur Reservation">
 
@@ -931,26 +982,62 @@ document.getElementById("hourlyField").style.display =
 
 
 function selectChauffeur(name) {
-  const pickup = document.getElementById("cPickup");
-  const dropoff = document.getElementById("cDrop");
+  const getValue = (...ids) => {
+    for (const id of ids) {
+      const el = document.getElementById(id);
+      if (el && el.value) return el.value;
+    }
+    return "";
+  };
 
-  const booking = document.getElementById("chauffeurBooking");
+  const pickup = getValue("cPickup");
+  const dropoff = getValue("cDrop");
 
-  const bookingPickup = booking.querySelector('[name="Pickup Location"]');
-  const bookingDropoff = booking.querySelector('[name="Drop-off Location"]');
+  const service =
+    document.querySelector("#chauffeur .tabs button.selected")
+      ?.textContent.trim() || "Chauffeur";
 
-  if (bookingPickup) bookingPickup.value = pickup?.value || "";
-  if (bookingDropoff) bookingDropoff.value = dropoff?.value || "";
+  const details = {
+    finalPickup: pickup,
+    finalDrop: dropoff,
+    finalDate: getValue("cDate"),
+    finalTime: getValue("cTime"),
+    finalPassengers: getValue("cPassengers"),
+    finalFlight: getValue("cFlight"),
+    finalVehicle: name,
+    finalTripType: service,
+    finalHours: getValue("cHours")
+  };
+
+  Object.entries(details).forEach(([id, value]) => {
+    const field = document.getElementById(id);
+    if (field) field.value = value;
+  });
+
+  const summary = document.getElementById("chauffeurTripSummary");
+
+  if (summary) {
+    summary.textContent = [
+      service,
+      name,
+      pickup && "Pickup: " + pickup,
+      dropoff && "Destination: " + dropoff,
+      details.finalDate && "Date: " + details.finalDate,
+      details.finalTime && "Time: " + details.finalTime,
+      details.finalPassengers && "Passengers: " + details.finalPassengers,
+      details.finalFlight && "Flight: " + details.finalFlight,
+      details.finalHours && "Hours: " + details.finalHours
+    ].filter(Boolean).join(" | ");
+  }
 
   chosenVehicle = name;
   chosenService = "Chauffeur Service";
 
-  document.getElementById("chauffeurSelection").textContent =
-    (document.querySelector("#chauffeur .tabs button.selected")?.textContent.trim() || "Chauffeur") + " - " + name;
+  const selection = document.getElementById("chauffeurSelection");
+  if (selection) selection.textContent = service + " - " + name;
 
   showScreen("chauffeurBooking");
 }
-  
 
 
 const GEOAPIFY_KEY = "ef2791ff32664666b9d555ce2a930d17";
