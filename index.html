@@ -757,13 +757,21 @@ input,select {
 <form id="bookingForm" action="https://formsubmit.co/armandodeclesiis@gmail.com" method="POST"><div class="field">
 
 <input type="text" id="pickupLocation" name="pickupLocation" required placeholder="Enter pickup address">
+  
+<div id="bookingPickupSuggestions"></div>
+
 
 <input type="hidden" name="_next" value="https://armandodeclesiis-a11y.github.io/a-transportation/Thank-you.html">
 </div>
+  
+
 <div class="field">
   <label>Return Location</label>
   <input type="text" id="returnLocation" name="returnLocation" required placeholder="Enter return address">
-</div><div class="field">
+</div>
+  <div id="bookingReturnSuggestions"></div>
+  </div>
+<div class="field">
 <label>Full Name</label>
 <input id="customer" name="customer" required placeholder="Your full name">
 </div>
@@ -1003,6 +1011,9 @@ setupAddressAutocomplete("cDrop", "dropSuggestions");
 setupAddressAutocomplete("rLocation", "rPickupSuggestions");
 setupAddressAutocomplete("rReturnLocation", "rReturnSuggestions");
 
+
+setupAddressAutocomplete("pickupLocation", "bookingPickupSuggestions");
+setupAddressAutocomplete("returnLocation", "bookingReturnSuggestions");
 
 </script>
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
