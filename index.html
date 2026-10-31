@@ -573,6 +573,22 @@ input,select {
 <label>Drop-off Location</label>
 <input id="cDrop" placeholder="Enter destination">
 </div>
+  
+<div class="field" id="hourlyField" style="display:none;">
+  <label>Number of Hours</label>
+  <select id="cHours">
+    <option value="">Select hours</option>
+    <option value="2">2 Hours</option>
+    <option value="3">3 Hours</option>
+    <option value="4">4 Hours</option>
+    <option value="5">5 Hours</option>
+    <option value="6">6 Hours</option>
+    <option value="8">8 Hours</option>
+    <option value="10">10 Hours</option>
+    <option value="12">12 Hours</option>
+  </select>
+</div>
+
 <div class="two">
 <div class="field">
 <label>Date</label>
@@ -852,6 +868,10 @@ showScreen("details");
 function setTrip(button,type){
  
   tripType=type;
+  
+document.getElementById("hourlyField").style.display =
+  type === "Hourly" ? "block" : "none";
+
   document.querySelectorAll(".tabs button").forEach(b=>b.classList.remove("selected"));
   button.classList.add("selected");
 
@@ -863,7 +883,7 @@ function setTrip(button,type){
     drop.placeholder="Drop-off destination";
   } else if(type==="Hourly"){
     pickup.placeholder="Enter pickup address";
-    drop.placeholder="Enter number of hours (e.g. 4 hours)";
+   drop.placeholder="Optional drop-off address";
   } else {
     pickup.placeholder="Enter pickup address";
     drop.placeholder="Enter destination address";
